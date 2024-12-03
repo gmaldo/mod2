@@ -44,6 +44,14 @@ export default class UserRepository{
         }
     }
 
+    makeAdmin = async (uid) => {
+        try{
+            return await this.dao.makeAdmin(uid)
+        }catch(error){
+            console.log(error)
+        }
+    }
+
     delete = async(uid) => {
         try {
             return await this.dao.delete(uid)

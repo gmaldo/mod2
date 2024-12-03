@@ -40,6 +40,15 @@ export default class User {
         }
     }
 
+    makeAdmin = async (id) => {
+        try {
+            let result = await usersModel.updateOne({ _id: id }, { $set: { role: 'admin' } })
+            return result
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     delete = async (id) => {
         return await usersModel.deleteOne({_id: id})
     }

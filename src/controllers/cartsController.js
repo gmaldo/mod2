@@ -1,4 +1,4 @@
-import {cartService,productService, ticketService} from "../repositories/index.js"
+import {cartService,productService, ticketService,userService} from "../repositories/index.js"
 
 class CartController{
     
@@ -12,8 +12,14 @@ class CartController{
     }
 
     addToCart = async (req, res) => {
+        let userCart = req.user.user.cart
         let cartId = req.params.cid
         let productId = req.params.pid
+        if(userCart!=cartId){
+            res.status(401).send({status:"error", messaje:"No tiene permisos para agregar productos a este carrito"})
+            return
+        }
+
         productService.getProductById(productId)
         .then(product => {
             if(product){

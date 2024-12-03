@@ -11,7 +11,7 @@ router.post('/', cartController.createCart)
 
 router.get('/:cid', cartController.getCart)
 
-router.post('/:cid/product/:pid', cartController.addToCart)
+router.post('/:cid/product/:pid',passportUtils.passportCall("jwt"), authorization("user"), cartController.addToCart)
 
 router.post("/:cid/purchase",passportUtils.passportCall("jwt"), authorization("user"), cartController.cartPurchase)
 

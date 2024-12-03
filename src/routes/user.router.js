@@ -9,4 +9,5 @@ router.get("/", passportUtils.passportCall("jwt"), authorization("admin"),userCo
 
 router.delete("/:uid", passportUtils.passportCall("jwt"), authorization("admin"), userController.delete)
 
+router.put("/:uid", passportUtils.passportCall("jwt"), userController.editRole)
 export default router
