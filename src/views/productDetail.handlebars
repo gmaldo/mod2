@@ -1,0 +1,22 @@
+<div class="product-detail">
+  <div class="product-info">
+    <h1 class="product-title">{{product.title}}</h1>
+    <p class="product-description">{{product.description}}</p>
+    <p class="product-code"><strong>Code:</strong> {{product.code}}</p>
+    <p class="product-price"><strong>Price:</strong> ${{product.price}}</p>
+    <p class="product-stock"><strong>Stock:</strong> {{product.stock}} units available</p>
+    <p class="product-category"><strong>Category:</strong> {{product.category}}</p>
+    <p id="product-id" hidden>{{product._id}}</p>
+    <p id="cart-id" hidden>{{cartId}}</p>
+
+    {{#if product.status}}
+      <!-- Botón habilitado cuando el producto está disponible -->
+      <button class="buy-now" id="buy-now-btn">Add to CART</button>
+    {{else}}
+      <!-- Botón deshabilitado si el producto no está disponible -->
+      <button class="buy-now" disabled>Out of Stock</button>
+    {{/if}}
+  </div>
+</div>
+<script src="/js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

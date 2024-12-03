@@ -1,0 +1,15 @@
+{{#if flag}}
+    <h1>Your Cart</h1>
+    <ul>
+        {{#each cartProducts}}
+        <li>
+            <strong>Product:</strong> {{product.title}} - <strong>Quantity:</strong> {{quantity}}
+        </li>
+        {{/each}}
+    </ul>
+    <form action="api/carts/{{cartId}}/purchase" method="POST">
+        <button type="submit">Proceder a la Compra</button>
+    </form>
+{{else}}
+    <h1>Carrito VACIO</h1>
+{{/if}}
