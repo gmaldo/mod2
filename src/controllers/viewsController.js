@@ -1,4 +1,5 @@
 import { productService ,cartService} from "../repositories/index.js";
+import fs from 'fs/promises'
 
 class viewsControllers {
 
@@ -41,6 +42,22 @@ class viewsControllers {
             flag = true
         }
         res.render('cart',{ flag, cartProducts , cartId})
+    }
+
+    createExampleData = async (req, res) => {
+        try {
+            // Leer el archivo JSON
+            const data = await fs.readFile('products.json', 'utf-8');
+            const products = JSON.parse(data);
+            for (const product of products) {
+                await productService.saveProduct(product);
+                console.log(`Producto ${product.title} agregado`);
+            }
+        } catch (error) {
+            console.error("Error al agregar los productos:", error);
+            res.send("Error al agregar los productos")
+        } 
+        res.send("Productos agregados correctamente")
     }
 }
 export default viewsControllers

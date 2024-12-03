@@ -15,4 +15,6 @@ router.get('/products/:pid',passportUtils.passportCall("jwt"),authorization("use
 
 router.get('/create', passportUtils.passportCall("jwt"),authorization("admin"),viewsController.createProduct)
 
+router.post('/createExampleData',viewsController.createExampleData)
+
 export default router

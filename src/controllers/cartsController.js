@@ -36,6 +36,20 @@ class CartController{
         .catch(err => res.status(500).send(err))
     }
 
+    emptyCart = async (req, res) => {
+        let userCart = req.user.user.cart
+        let cartId = req.params.cid
+        if(userCart!=cartId){
+            res.status(401).send({status:"error", messaje:"No tiene permisos para borrar productos a este carrito"})
+            return
+        }
+        cartService.deleteAll(cartId)
+        .then(cart => {
+            res.status(200).send(cart.products)
+        })
+        .catch(err => res.status(500).send(err))
+    }
+
     getCart = async (req, res) => {
         let cartId = req.params.cid
         cartService.getCart(cartId)

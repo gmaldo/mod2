@@ -10,6 +10,9 @@
     <form action="api/carts/{{cartId}}/purchase" method="POST">
         <button type="submit">Proceder a la Compra</button>
     </form>
+    <form action="api/carts/{{cartId}}/empty" method="POST">
+        <button type="submit">Borrar Carrito</button>
+    </form>
 {{else}}
     <h1>Carrito VACIO</h1>
 {{/if}}

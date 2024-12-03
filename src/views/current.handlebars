@@ -6,6 +6,9 @@
         <p><strong>Edad:</strong> {{age}}</p>
         <p><strong>Rol:</strong>{{role}}</p>
     </div>
+    <form action="/api/users/makeadmin" method="POST">
+        <button type="submit" class="logout-button">Hacer Admin</button>
+    </form>
     <form action="/api/sessions/logout" method="POST">
         <button type="submit" class="logout-button">Cerrar sesión</button>
     </form>

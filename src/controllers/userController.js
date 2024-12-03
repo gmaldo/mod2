@@ -37,6 +37,16 @@ class UserController {
         }
     }
 
+    async makeAdmin(req,res) {
+        try {
+            const userid = req.user.user._id
+            const user = await userService.makeAdmin(userid)
+            res.status(200).json("you are now admin" + user)
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+
     async delete(req, res) {
         try {
             const user = await userService.delete(req.params.uid);

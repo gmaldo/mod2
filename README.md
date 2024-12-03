@@ -19,6 +19,7 @@ Para instalar las librerias ```npm install```.
 Para levantar el servidor correr el comando ```node src/app.js```
 # Datos
 Se provee un ```products.json``` con productos de muestra, se puede cargar en mongo atlas copiando y pegando.
+O tambien hacer un post a localhost:8080/createExampleData crea datos de ejemplo o bien hacer un usuario admin y hacerlo desde localhost:8080/create
 
 
 # ENV File
@@ -46,7 +47,7 @@ Pantalla de login se puede entrar con github o con usuario y contraseña. Ruta h
 ![Pantalla de login](https://i.ibb.co/XVCzqLX/Captura-de-pantalla-2024-12-03-a-la-s-12-27-52-p-m.png
 )
 ### Estrategia current
-Pantalla de "Perfil de usuario". Ruta http://localhost:8080/api/sessions/current
+Pantalla de "Perfil de usuario" Permite hacerse admin pero requiere hacer login de nuevo para que tome efecto. Ruta http://localhost:8080/api/sessions/current 
 ![Current](https://i.ibb.co/ZBDY0pp/Captura-de-pantalla-2024-12-03-a-la-s-12-30-20-p-m.png)
 ### Registro
 Pantalla de registro para nuevo usuario. Ruta: http://localhost:8080/api/sessions/signup
@@ -189,6 +190,9 @@ obtiene todos los usuarios, requiere admin.
 Borra un usuario, requiere admin.
 ### PUT /api/users/:uid
 Hace admin a un usuario (para entrar al create y hacer cosas de admin), solo deberia hacerlo el admin pero a fines de muestra puede hacerlo un user (para poder registrarse y hacer luego modificar a admin ya que al registrarse solo se crea "user")
+
+### POST /api/users/makeadmin
+Hace admin al usuario acual, pero hay que generar un nuevo jwt, hay que volver a loguearse
 
 ## Session
 
